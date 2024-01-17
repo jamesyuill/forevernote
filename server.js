@@ -19,6 +19,15 @@ app.get('/api/docs', (req, res) => {
   res.status(200).send({ docs: JSON.parse(docs) });
 });
 
+app.get('/api/docs/:id', (req, res) => {
+  const doc_id = req.params.id;
+  const doc = fs.readFileSync(`data/${doc_id}.json`, {
+    encoding: 'utf-8',
+  });
+
+  res.status(200).send({ doc: JSON.parse(doc) });
+});
+
 app.listen(port, () => {
   console.log(`server listening on port: ${port}`);
 });

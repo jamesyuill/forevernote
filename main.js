@@ -1,3 +1,4 @@
+import getDocById from './utils/getDocById.js';
 import getStoredDocs from './utils/getStoredDocs.js';
 
 const searchBar = document.getElementById('.searchbar');
@@ -10,9 +11,7 @@ const searchDocs = async (e) => {
   e.preventDefault();
   resultsDiv.innerText = '';
   const searchQuery = e.target[0].value;
-  console.log(searchQuery);
   const filteredDocs = findDocs(searchQuery, docs);
-  console.log(filteredDocs);
   displayDocs(filteredDocs);
 };
 
@@ -34,15 +33,16 @@ const displayDocs = (results) => {
     const cardElement = document.createElement('article');
     cardElement.className = 'doc-cards';
     const elementTitle = document.createElement('h3');
-    elementTitle.innerText = `Topic: ${card.title}`;
+    elementTitle.innerText = `Title: ${card.title}`;
     const elementTopic = document.createElement('h4');
     elementTopic.innerText = `Topic: ${card.topic}`;
-
+    const elementTags = document.createElement('p');
+    elementTags.innerText = card.tags.join(' | ');
     //appends elements to the card
-    cardElement.append(elementTitle, elementTopic);
+    cardElement.append(elementTitle, elementTopic, elementTags);
 
     cardElement.addEventListener('click', () => {
-      findDocById(card.id);
+      findDoc(card.id);
     });
 
     //appends the card to the results div
@@ -50,10 +50,10 @@ const displayDocs = (results) => {
   });
 };
 
-const findDocById = (id) => {
-  //search for correct document with dynamic path
-
-  console.log(id);
+const findDoc = async (query_id) => {
+  const doc = await getDocById(query_id);
+  appendDetails(doc);
+  location.replace('document.html');
 };
 
 searchForm.addEventListener('submit', searchDocs);
