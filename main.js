@@ -4,6 +4,7 @@ import getStoredDocs from './utils/getStoredDocs.js';
 const searchBar = document.getElementById('.searchbar');
 const searchForm = document.getElementById('search-form');
 const resultsDiv = document.getElementById('results');
+const documentDiv = document.getElementById('document');
 
 const { docs } = await getStoredDocs();
 
@@ -32,28 +33,40 @@ const displayDocs = (results) => {
   results.forEach((card) => {
     const cardElement = document.createElement('article');
     cardElement.className = 'doc-cards';
-    const elementTitle = document.createElement('h3');
+    const elementTitle = document.createElement('h4');
     elementTitle.innerText = `Title: ${card.title}`;
-    const elementTopic = document.createElement('h4');
+    const elementTopic = document.createElement('h5');
     elementTopic.innerText = `Topic: ${card.topic}`;
     const elementTags = document.createElement('p');
     elementTags.innerText = card.tags.join(' | ');
     //appends elements to the card
     cardElement.append(elementTitle, elementTopic, elementTags);
 
-    cardElement.addEventListener('click', () => {
-      findDoc(card.id);
-    });
-
     //appends the card to the results div
     resultsDiv.appendChild(cardElement);
+    cardElement.addEventListener('click', async () => {
+      const doc = await findDoc(card.id);
+
+      displayChosenDoc(doc);
+    });
   });
 };
 
 const findDoc = async (query_id) => {
-  const doc = await getDocById(query_id);
-  appendDetails(doc);
-  location.replace('document.html');
+  const { doc } = await getDocById(query_id);
+  return doc;
+};
+
+// creates and appends chosen document elements
+const displayChosenDoc = (doc) => {
+  documentDiv.innerText = '';
+  const docTitle = document.createElement('h3');
+  docTitle.innerText = doc.title;
+  const docContent = document.createElement('p');
+  docContent.innerText = doc.content;
+
+  documentDiv.append(docTitle, docContent);
+  documentDiv.style.visibility = 'visible';
 };
 
 searchForm.addEventListener('submit', searchDocs);
