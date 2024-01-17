@@ -1,37 +1,59 @@
-{
-    "docs": [
-        {
-            "id": "1",
-            "topic": "javascript",
-            "title": "how to install javascript",
-            "tags": [
-                "javascript",
-                "install",
-                "libraries"
-            ],
-            "path": "/data/1.json"
-        },
-        {
-            "id": "2",
-            "topic": "python",
-            "title": "how to install python",
-            "tags": [
-                "python",
-                "install",
-                "libraries"
-            ],
-            "path": "/data/2.json"
-        },
-        {
-            "id": "3",
-            "topic": "rust",
-            "title": "how to install rust",
-            "tags": [
-                "rust",
-                "install",
-                "libraries"
-            ],
-            "path": "/data/3.json"
-        }
-    ]
-}
+[
+    {
+        "id": "1",
+        "topic": "javascript",
+        "title": "how to install javascript",
+        "tags": [
+            "javascript",
+            "install",
+            "libraries"
+        ],
+        "path": "/data/1.json"
+    },
+    {
+        "id": "2",
+        "topic": "python",
+        "title": "how to install python",
+        "tags": [
+            "python",
+            "install",
+            "libraries"
+        ],
+        "path": "/data/2.json"
+    },
+    {
+        "id": "3",
+        "topic": "rust",
+        "title": "how to install rust",
+        "tags": [
+            "rust",
+            "install",
+            "libraries"
+        ],
+        "path": "/data/3.json"
+    },
+    {
+        "id": "4",
+        "topic": "python",
+        "title": "A simple for loop",
+        "tags": [
+            "python",
+            "for loop",
+            "range",
+            "iteration"
+        ],
+        "path": "/data/4.json"
+    },
+    {
+        "id": "5",
+        "topic": "javascript",
+        "title": "ternary operators",
+        "tags": [
+            "javascript",
+            "ternary",
+            "conditionals",
+            "booleans"
+        ],
+        "path": "/data/5.json"
+    }
+]
