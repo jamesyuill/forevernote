@@ -9,15 +9,21 @@
   </head>
   <body>
     <div class="container">
-      <form id="search-form" class="search-form">
-        <input
-          id="search-bar"
-          type="text"
-          name="search"
-          placeholder="Search..."
-        />
-        <button type="submit" id="search-btn">search</button>
-      </form>
+      <header>
+        <form id="search-form" class="search-form">
+          <input
+            id="search-bar"
+            type="text"
+            name="search"
+            placeholder="Search..."
+          />
+          <button type="submit" id="search-btn">search</button>
+        </form>
+        <div class="button-menu">
+          <button id="add-btn">add</button>
+          <button id="edit-btn">edit</button>
+        </div>
+      </header>
 
       <div class="results" id="results"></div>
       <div class="document" id="document"></div>

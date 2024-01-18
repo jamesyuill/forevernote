@@ -5,6 +5,7 @@ const searchBar = document.getElementById('.searchbar');
 const searchForm = document.getElementById('search-form');
 const resultsDiv = document.getElementById('results');
 const documentDiv = document.getElementById('document');
+const addBtn = document.getElementById('add-btn');
 
 const { docs } = await getStoredDocs();
 
@@ -37,7 +38,7 @@ const displayDocs = (results) => {
     elementTitle.innerText = `Title: ${card.title}`;
     const elementTopic = document.createElement('h5');
     elementTopic.innerText = `Topic: ${card.topic}`;
-    const elementTags = document.createElement('p');
+    const elementTags = document.createElement('h5');
     elementTags.innerText = card.tags.join(' | ');
     //appends elements to the card
     cardElement.append(elementTitle, elementTopic, elementTags);
@@ -69,4 +70,33 @@ const displayChosenDoc = (doc) => {
   documentDiv.style.visibility = 'visible';
 };
 
+//add new function
+const addNewDoc = () => {
+  resultsDiv.innerText = '';
+
+  //create form with classname
+
+  //create a submit button with classname
+
+  //input for Topic
+
+  //input for tags
+
+  //input for title
+
+  //input for content (text area)
+
+  //append to results Div
+
+  //create unique id? date and time?
+
+  //update docs.json
+
+  //add new json file
+};
+//edit function
+
+//delete function
+
 searchForm.addEventListener('submit', searchDocs);
+addBtn.addEventListener('click', addNewDoc);
