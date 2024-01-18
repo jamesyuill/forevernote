@@ -4,7 +4,7 @@ import 'dotenv/config';
 import cors from 'cors';
 
 const app = express();
-
+app.use(express.json());
 app.use(cors());
 const port = process.env.PORT || 8080;
 
@@ -26,6 +26,17 @@ app.get('/api/docs/:id', (req, res) => {
   });
 
   res.status(200).send({ doc: JSON.parse(doc) });
+});
+
+app.post('/api/docs', (req, res) => {
+  const ogDocs = req.body;
+  fs.writeFile('data/docs.json', JSON.stringify(ogDocs), (err) => {
+    if (err) console.log(err);
+    else {
+      console.log('docs.json updated successfully\n');
+      res.status(201).send({ msg: 'docs.json updated successfully' });
+    }
+  });
 });
 
 app.listen(port, () => {

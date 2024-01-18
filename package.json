@@ -5,7 +5,7 @@
   "type": "module",
   "main": "app.js",
   "scripts": {
-    "dev": "nodemon server.js",
+    "dev": "nodemon server.js --ignore data/docs.json",
     "test": "node --experimental-vm-modules node_modules/.bin/jest"
   },
   "keywords": [],
